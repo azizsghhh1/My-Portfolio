@@ -13,9 +13,9 @@ const Hero = () => {
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-10">
     {/* Lado esquerdo: Texto */}
     <div className="space-y-8">
-      <h1 className="text-4xl md:text-8xl font-bold leading-[1.05] tracking-tight">
+      <h1 className="text-4xl md:text-8xl font-bold leading-[1.05] tracking-tight hover:text-[#a5c9ff]">
         Paulo <br />
-        <span className="text-[#a5c9ff]">Henrique</span>
+        <span className="text-[#a5c9ff] hover:text-white">Henrique</span>
       </h1>
 
       <p className="text-gray-400 text-xl max-w-md leading-relaxed transition-colors hover:text-white">
