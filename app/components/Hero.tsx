@@ -7,7 +7,7 @@ import { Github, Linkedin, MessageCircle } from "lucide-react";
 
 const Hero = () => {
   return (
-    <section id="me" className="py-16 md:py-24 relative">
+    <section className="py-16 md:py-24 relative">
   <Navbar /> {/* Navbar transparente com menu hamburger */}
 
   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-10">
