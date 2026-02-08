@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 export default function ChatBot() {
   const [open, setOpen] = useState(false);
-  const router = useRouter();
 
-  function goTo(path: string) {
-    router.push(path);
+  function goTo(id: string) {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({ behavior: "smooth" });
     setOpen(false);
   }
 
@@ -33,23 +32,23 @@ export default function ChatBot() {
           </p>
 
           <div className="flex flex-col gap-2">
-            <button onClick={() => goTo("/projetos")} className="bg-green-500 p-2 rounded">
-              🔐 Projetos de Cybersegurança
+            <button onClick={() => goTo("me")} className="bg-green-500 p-2 rounded">
+              👤 Sobre mim
             </button>
 
-            <button onClick={() => goTo("/projetos")} className="bg-green-500 p-2 rounded">
-              📊 Projetos de Análise de Dados
+            <button onClick={() => goTo("servicos")} className="bg-green-500 p-2 rounded">
+              🛠️ Serviços
             </button>
 
-            <button onClick={() => goTo("/projetos")} className="bg-green-500 p-2 rounded">
-              💻 Projetos Web
+            <button onClick={() => goTo("processo")} className="bg-green-500 p-2 rounded">
+              ⚙️ Processo
             </button>
 
-            <button onClick={() => goTo("/curriculo")} className="bg-green-500 p-2 rounded">
-              📄 Ver currículo
+            <button onClick={() => goTo("projetos")} className="bg-green-500 p-2 rounded">
+              🚀 Projetos
             </button>
 
-            <button onClick={() => goTo("/contato")} className="bg-green-500 p-2 rounded">
+            <button onClick={() => goTo("contact")} className="bg-green-500 p-2 rounded">
               📬 Contato
             </button>
           </div>
