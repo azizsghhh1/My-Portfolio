@@ -1,36 +1,37 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🚀 Publiquei meu portfólio profissional desenvolvido com Next.js, Tailwind CSS e apoio de IA Generativa
 
-## Getting Started
+🔗 https://portifolio-cyber.vercel.app/
 
-First, run the development server:
+Do meu primeiro portfólio em HTML5, CSS3 e JavaScript… ao meu portfólio atual com Next.js, Tailwind e IA Generativa.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Lembro quando criei meu primeiro site apenas com HTML5, CSS3 e JavaScript. Na época, o desafio era fazer a página funcionar.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Hoje, estou aprendendo e aplicando uma nova tecnologia: Next.js com Tailwind CSS, utilizando IA generativa como apoio no desenvolvimento e realizando deploy em produção na Vercel.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Esse novo portfólio não foi apenas sobre visual. Foi sobre entender, na prática:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+⚙️ Organização de um projeto React/Next.js
+⚙️ Componentização e responsividade com Tailwind
+⚙️ Processo de build e deploy em produção
+⚙️ Diferença entre rodar localmente e rodar em ambiente real
+⚙️ Uso da IA como ferramenta de produtividade e aprendizado
 
-## Learn More
+Durante o deploy, enfrentei erros de build, problemas de caminhos de arquivos, ajustes de estrutura e configurações até o projeto funcionar corretamente na Vercel. E foi justamente isso que mais agregou conhecimento.
 
-To learn more about Next.js, take a look at the following resources:
+Hoje, esse portfólio funciona como uma vitrine técnica dos meus estudos e projetos voltados para:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+🔐 Segurança da Informação
+📊 Análise de Dados com Python
+🖥️ Monitoramento e análise de logs (NOC/SOC)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Mais do que um site, ele representa minha evolução como profissional de tecnologia: aprendendo, aplicando, errando, corrigindo e colocando em produção.
 
-## Deploy on Vercel
+💬 Feedbacks são muito bem-vindos!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#NextJS #TailwindCSS #IA #Vercel #Aprendizado #Evolução #SegurançaDaInformação #Python #Portfólio #SOC #NOC
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+💬 Feedbacks são bem-vindos!
+
+#NextJS #TailwindCSS #IA #Vercel #Deploy #Aprendizado #SegurançaDaInformação #Python #Portfólio #SOC #NOC
