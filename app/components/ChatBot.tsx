@@ -73,11 +73,44 @@ export default function ChatBot() {
     return "";
   }, [messages]);
 
-  const plainText = (text: string) =>
-    text
-      .replace(/\*\*(.*?)\*\*/g, "$1")
-      .replace(/^\s*[-•]\s+/gm, "")
-      .replace(/`{1,3}([^`]+)`{1,3}/g, "$1");
+  const sanitizeHtml = (html: string) => {
+    if (typeof window === "undefined") return html;
+    const allowedTags = new Set(["P", "BR", "STRONG", "EM", "UL", "OL", "LI", "A", "SPAN"]);
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const walk = (node: Element) => {
+      [...node.children].forEach((child) => {
+        if (!allowedTags.has(child.tagName)) {
+          child.replaceWith(...child.childNodes);
+        } else {
+          // Clean attributes
+          [...child.attributes].forEach((attr) => {
+            if (child.tagName === "A") {
+              if (attr.name !== "href" && attr.name !== "target" && attr.name !== "rel") {
+                child.removeAttribute(attr.name);
+              }
+            } else {
+              child.removeAttribute(attr.name);
+            }
+          });
+
+          if (child.tagName === "A") {
+            const href = child.getAttribute("href") || "";
+            const safe = href.startsWith("https://") || href.startsWith("http://") || href.startsWith("mailto:");
+            if (!safe) {
+              child.removeAttribute("href");
+            }
+            child.setAttribute("rel", "noopener noreferrer");
+            child.setAttribute("target", "_blank");
+          }
+
+          walk(child);
+        }
+      });
+    };
+
+    walk(doc.body);
+    return doc.body.innerHTML;
+  };
 
   const isGitHubPages =
     typeof window !== "undefined" && window.location.hostname.endsWith("github.io");
@@ -158,9 +191,14 @@ export default function ChatBot() {
                     : "bg-white/10 text-white p-2 rounded-lg"
                 }
               >
-                <span className="whitespace-pre-wrap">
-                  {msg.role === "assistant" ? plainText(msg.content) : msg.content}
-                </span>
+                {msg.role === "assistant" ? (
+                  <span
+                    className="whitespace-pre-wrap"
+                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(msg.content) }}
+                  />
+                ) : (
+                  <span className="whitespace-pre-wrap">{msg.content}</span>
+                )}
               </div>
             ))}
             {loading && (
