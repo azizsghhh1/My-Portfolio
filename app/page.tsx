@@ -1,14 +1,14 @@
-import Navbar from './components/Navbar'; // Importar só uma vez
+import Navbar from './components/Navbar'; // Import only once
 import Hero from './components/Hero';
-import Servicos from './components/Servicos';
-import Processo from './components/Processo';
-import Projetos from './components/Projetos';
+import About from './components/About';
+import Skills from './components/Skills';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center">
-      {/* Navbar só aqui */}
+      {/* Navbar only here */}
     
 
       <div className="w-full max-w-7xl px-6 md:px-12">
@@ -16,16 +16,16 @@ export default function Home() {
           <Hero />
         </section>
 
-        <section id="servicos">
-          <Servicos />
+        <section id="about">
+          <About />
         </section>
 
-        <section id="processo">
-          <Processo />
+        <section id="skills">
+          <Skills />
         </section>
 
-        <section id="projetos">
-          <Projetos />
+        <section id="experience">
+          <Experience />
         </section>
 
         <section id="contact">
