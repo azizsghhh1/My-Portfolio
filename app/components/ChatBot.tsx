@@ -75,7 +75,21 @@ export default function ChatBot() {
 
   const sanitizeHtml = (html: string) => {
     if (typeof window === "undefined") return html;
-    const allowedTags = new Set(["P", "BR", "STRONG", "EM", "UL", "OL", "LI", "A", "SPAN"]);
+    const allowedTags = new Set([
+      "P",
+      "BR",
+      "STRONG",
+      "EM",
+      "UL",
+      "OL",
+      "LI",
+      "A",
+      "SPAN",
+      "DIV",
+      "H1",
+      "H2",
+      "H3",
+    ]);
     const doc = new DOMParser().parseFromString(html, "text/html");
     const walk = (node: Element) => {
       [...node.children].forEach((child) => {
@@ -192,8 +206,8 @@ export default function ChatBot() {
                 }
               >
                 {msg.role === "assistant" ? (
-                  <span
-                    className="whitespace-pre-wrap"
+                  <div
+                    className="whitespace-pre-wrap chatbot-content"
                     dangerouslySetInnerHTML={{ __html: sanitizeHtml(msg.content) }}
                   />
                 ) : (
