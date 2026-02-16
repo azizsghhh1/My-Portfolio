@@ -73,6 +73,12 @@ export default function ChatBot() {
     return "";
   }, [messages]);
 
+  const plainText = (text: string) =>
+    text
+      .replace(/\*\*(.*?)\*\*/g, "$1")
+      .replace(/^\s*[-•]\s+/gm, "")
+      .replace(/`{1,3}([^`]+)`{1,3}/g, "$1");
+
   const isGitHubPages =
     typeof window !== "undefined" && window.location.hostname.endsWith("github.io");
 
@@ -152,7 +158,9 @@ export default function ChatBot() {
                     : "bg-white/10 text-white p-2 rounded-lg"
                 }
               >
-                <span className="whitespace-pre-wrap">{msg.content}</span>
+                <span className="whitespace-pre-wrap">
+                  {msg.role === "assistant" ? plainText(msg.content) : msg.content}
+                </span>
               </div>
             ))}
             {loading && (
