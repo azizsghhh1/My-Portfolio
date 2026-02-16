@@ -3,7 +3,7 @@
 Modern portfolio built with Next.js, Tailwind CSS, and an LLM-powered assistant. It showcases my experience in SecOps/DevSecOps and AI/Security, including cloud-native 5G security work, runtime protection, and applied research projects.
 
 ## Live
-- Add your deployment URL here.
+- GitHub Pages: https://azizsghhh1.github.io/My-Portfolio/
 
 ## Tech Stack
 - Next.js 16
@@ -16,9 +16,6 @@ Modern portfolio built with Next.js, Tailwind CSS, and an LLM-powered assistant.
 - Recruiter-friendly experience/projects layout
 - LLM assistant limited to profile knowledge
 - Contact form (Formspree)
-
-## Getting Started
-
 ### 1) Install
 ```
 npm install
@@ -45,6 +42,11 @@ Update the Formspree endpoint in [app/components/Contact.tsx](app/components/Con
 ```
 https://formspree.io/f/xeelkoyd
 ```
+
+## GitHub Pages
+This project is configured for static export. The GitHub Pages workflow publishes the `out/` folder.
+
+Note: API routes (LLM chatbot) won’t run on GitHub Pages. If you need the chatbot, deploy to a platform that supports Next.js server functions (e.g., Vercel or Render).
 
 ## License
 All rights reserved.
