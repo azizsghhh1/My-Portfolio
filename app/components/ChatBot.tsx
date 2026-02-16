@@ -152,7 +152,7 @@ export default function ChatBot() {
                     : "bg-white/10 text-white p-2 rounded-lg"
                 }
               >
-                {msg.content}
+                <span className="whitespace-pre-wrap">{msg.content}</span>
               </div>
             ))}
             {loading && (
