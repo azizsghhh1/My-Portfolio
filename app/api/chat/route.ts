@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { Groq } from "groq-sdk";
 
-const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
-
 const SYSTEM_PROMPT = `You are the personal assistant for Mohamed Aziz Sghaier. You must ONLY answer using the profile information below. You MAY respond to greetings (e.g., hello/hi/hey) and short small-talk politely, then steer back to Mohamed’s profile. If a question is unrelated or missing from the profile, reply: "I can only answer questions about Mohamed Aziz Sghaier's profile, experience, and projects." Keep responses concise, recruiter-friendly, and in English.
 
 Profile summary:
@@ -35,12 +33,15 @@ Community:
 
 export async function POST(request: Request) {
   try {
-    if (!process.env.GROQ_API_KEY) {
+    const apiKey = process.env.GROQ_API_KEY;
+    if (!apiKey) {
       return NextResponse.json(
         { error: "Missing GROQ_API_KEY" },
         { status: 500 }
       );
     }
+
+    const groq = new Groq({ apiKey });
 
     const body = await request.json();
     const userMessages = Array.isArray(body?.messages) ? body.messages : [];

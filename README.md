@@ -1,37 +1,50 @@
-🚀 Publiquei meu portfólio profissional desenvolvido com Next.js, Tailwind CSS e apoio de IA Generativa
+# Mohamed Aziz Sghaier — Portfolio
 
-🔗 https://portifolio-cyber.vercel.app/
+Modern portfolio built with Next.js, Tailwind CSS, and an LLM-powered assistant. It showcases my experience in SecOps/DevSecOps and AI/Security, including cloud-native 5G security work, runtime protection, and applied research projects.
 
-Do meu primeiro portfólio em HTML5, CSS3 e JavaScript… ao meu portfólio atual com Next.js, Tailwind e IA Generativa.
+## Live
+- Add your deployment URL here.
 
-Lembro quando criei meu primeiro site apenas com HTML5, CSS3 e JavaScript. Na época, o desafio era fazer a página funcionar.
+## Tech Stack
+- Next.js 16
+- Tailwind CSS
+- Groq API (LLM assistant)
+- Formspree (contact form)
 
-Hoje, estou aprendendo e aplicando uma nova tecnologia: Next.js com Tailwind CSS, utilizando IA generativa como apoio no desenvolvimento e realizando deploy em produção na Vercel.
+## Features
+- Bilingual UI (English/French) via global language toggle
+- Recruiter-friendly experience/projects layout
+- LLM assistant limited to profile knowledge
+- Contact form (Formspree)
 
-Esse novo portfólio não foi apenas sobre visual. Foi sobre entender, na prática:
+## Getting Started
 
-⚙️ Organização de um projeto React/Next.js
-⚙️ Componentização e responsividade com Tailwind
-⚙️ Processo de build e deploy em produção
-⚙️ Diferença entre rodar localmente e rodar em ambiente real
-⚙️ Uso da IA como ferramenta de produtividade e aprendizado
+### 1) Install
+```
+npm install
+```
 
-Durante o deploy, enfrentei erros de build, problemas de caminhos de arquivos, ajustes de estrutura e configurações até o projeto funcionar corretamente na Vercel. E foi justamente isso que mais agregou conhecimento.
+### 2) Environment
+Create a `.env` file with:
+```
+GROQ_API_KEY=your_key_here
+```
 
-Hoje, esse portfólio funciona como uma vitrine técnica dos meus estudos e projetos voltados para:
+### 3) Run
+```
+npm run dev
+```
 
-🔐 Segurança da Informação
-📊 Análise de Dados com Python
-🖥️ Monitoramento e análise de logs (NOC/SOC)
+### 4) Build
+```
+npm run build
+```
 
-Mais do que um site, ele representa minha evolução como profissional de tecnologia: aprendendo, aplicando, errando, corrigindo e colocando em produção.
+## Contact Form
+Update the Formspree endpoint in [app/components/Contact.tsx](app/components/Contact.tsx):
+```
+https://formspree.io/f/xeelkoyd
+```
 
-💬 Feedbacks são muito bem-vindos!
-
-#NextJS #TailwindCSS #IA #Vercel #Aprendizado #Evolução #SegurançaDaInformação #Python #Portfólio #SOC #NOC
-
-
-
-💬 Feedbacks são bem-vindos!
-
-#NextJS #TailwindCSS #IA #Vercel #Deploy #Aprendizado #SegurançaDaInformação #Python #Portfólio #SOC #NOC
+## License
+All rights reserved.
