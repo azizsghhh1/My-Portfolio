@@ -2,6 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useLanguage } from "./LanguageContext";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeSanitize, { defaultSchema } from "rehype-sanitize";
 
 type ChatMessage = {
   role: "user" | "assistant";
@@ -73,58 +76,23 @@ export default function ChatBot() {
     return "";
   }, [messages]);
 
-  const sanitizeHtml = (html: string) => {
-    if (typeof window === "undefined") return html;
-    const allowedTags = new Set([
-      "P",
-      "BR",
-      "STRONG",
-      "EM",
-      "UL",
-      "OL",
-      "LI",
-      "A",
-      "SPAN",
-      "DIV",
-      "H1",
-      "H2",
-      "H3",
-    ]);
-    const doc = new DOMParser().parseFromString(html, "text/html");
-    const walk = (node: Element) => {
-      [...node.children].forEach((child) => {
-        if (!allowedTags.has(child.tagName)) {
-          child.replaceWith(...child.childNodes);
-        } else {
-          // Clean attributes
-          [...child.attributes].forEach((attr) => {
-            if (child.tagName === "A") {
-              if (attr.name !== "href" && attr.name !== "target" && attr.name !== "rel") {
-                child.removeAttribute(attr.name);
-              }
-            } else {
-              child.removeAttribute(attr.name);
-            }
-          });
-
-          if (child.tagName === "A") {
-            const href = child.getAttribute("href") || "";
-            const safe = href.startsWith("https://") || href.startsWith("http://") || href.startsWith("mailto:");
-            if (!safe) {
-              child.removeAttribute("href");
-            }
-            child.setAttribute("rel", "noopener noreferrer");
-            child.setAttribute("target", "_blank");
-          }
-
-          walk(child);
-        }
-      });
-    };
-
-    walk(doc.body);
-    return doc.body.innerHTML;
-  };
+  const markdownSchema = useMemo(
+    () => ({
+      ...defaultSchema,
+      tagNames: [
+        ...(defaultSchema.tagNames || []),
+        "h1",
+        "h2",
+        "h3",
+        "span",
+      ],
+      attributes: {
+        ...defaultSchema.attributes,
+        a: ["href", "title", "target", "rel"],
+      },
+    }),
+    []
+  );
 
   const isGitHubPages =
     typeof window !== "undefined" && window.location.hostname.endsWith("github.io");
@@ -206,10 +174,14 @@ export default function ChatBot() {
                 }
               >
                 {msg.role === "assistant" ? (
-                  <div
-                    className="whitespace-pre-wrap chatbot-content"
-                    dangerouslySetInnerHTML={{ __html: sanitizeHtml(msg.content) }}
-                  />
+                  <div className="chatbot-content">
+                    <ReactMarkdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[[rehypeSanitize, markdownSchema]]}
+                    >
+                      {msg.content}
+                    </ReactMarkdown>
+                  </div>
                 ) : (
                   <span className="whitespace-pre-wrap">{msg.content}</span>
                 )}
