@@ -4,7 +4,7 @@ const repoName = "My-Portfolio";
 const isGithubPages = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {
-	output: "export",
+	output: isGithubPages ? "export" : undefined,
 	basePath: isGithubPages ? `/${repoName}` : "",
 	assetPrefix: isGithubPages ? `/${repoName}/` : "",
 	env: {
