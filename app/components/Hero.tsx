@@ -10,6 +10,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 
 const Hero = () => {
   const { language } = useLanguage();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   const description =
     language === "fr"
@@ -61,7 +62,12 @@ const Hero = () => {
     {/* Right side: Photo */}
     <div className="flex justify-center -mt-12">
       <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-[#a5c9ff] hover:border-white transition-colors duration-300">
-        <Image src="/images/aziz.jpg" alt="Mohamed Aziz Sghaier" fill className="object-cover" />
+        <Image
+          src={`${basePath}/images/aziz.jpg`}
+          alt="Mohamed Aziz Sghaier"
+          fill
+          className="object-cover"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent opacity-60" />
       </div>
     </div>

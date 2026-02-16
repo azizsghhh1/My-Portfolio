@@ -7,6 +7,7 @@ import { useLanguage } from "./LanguageContext";
 
 const About = () => {
   const { language } = useLanguage();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   const title = language === "fr" ? "À propos" : "About Me";
   const paragraphOne =
@@ -30,7 +31,7 @@ const About = () => {
         <div className="lg:col-span-4 flex justify-center">
         <div className="relative w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden hidden lg:block">
           <Image
-            src="/images/aziz.jpg"
+            src={`${basePath}/images/aziz.jpg`}
             alt="Mohamed Aziz Sghaier"
             fill
             className="object-cover"

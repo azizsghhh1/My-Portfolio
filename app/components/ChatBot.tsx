@@ -73,9 +73,12 @@ export default function ChatBot() {
     return "";
   }, [messages]);
 
+  const isGitHubPages =
+    typeof window !== "undefined" && window.location.hostname.endsWith("github.io");
+
   async function sendMessage(content: string) {
     const trimmed = content.trim();
-    if (!trimmed || loading) return;
+    if (!trimmed || loading || isGitHubPages) return;
 
     const nextMessages: ChatMessage[] = [
       ...messages,
@@ -160,6 +163,14 @@ export default function ChatBot() {
             <div ref={messagesEndRef} />
           </div>
 
+          {isGitHubPages && (
+            <div className="mt-3 text-xs text-yellow-200/80">
+              {language === "fr"
+                ? "Le chatbot nécessite un hébergement avec fonctions serveur (ex: Vercel)."
+                : "The chatbot requires a host with server functions (e.g., Vercel)."}
+            </div>
+          )}
+
           {loading && lastUserMessage && (
             <div className="mt-3 text-xs text-green-200/80">
               {language === "fr" ? "Dernier message" : "Last message"}: “{lastUserMessage}”
@@ -191,11 +202,12 @@ export default function ChatBot() {
                   : "Ask about Mohamed’s profile..."
               }
               className="flex-1 bg-black/40 border border-white/10 rounded px-3 py-2 text-sm outline-none"
+              disabled={isGitHubPages}
             />
             <button
               onClick={() => sendMessage(input)}
               className="bg-green-500 text-black px-4 py-2 rounded text-sm font-semibold"
-              disabled={loading}
+              disabled={loading || isGitHubPages}
             >
               {language === "fr" ? "Envoyer" : "Send"}
             </button>
