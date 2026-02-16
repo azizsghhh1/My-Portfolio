@@ -118,7 +118,7 @@ export default function ChatBot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
       {!open && (
         <button
           onClick={() => setOpen(true)}
@@ -129,7 +129,7 @@ export default function ChatBot() {
       )}
 
       {open && (
-        <div className="bg-zinc-900 text-white w-[420px] md:w-[520px] p-5 rounded-2xl shadow-2xl">
+        <div className="bg-zinc-900 text-white w-[92vw] max-w-[520px] p-4 md:p-5 rounded-2xl shadow-2xl">
           <div className="flex items-center justify-between mb-3">
             <p className="font-bold">
               {language === "fr" ? "Assistant de Mohamed Aziz" : "Mohamed Aziz Assistant"}
@@ -142,7 +142,7 @@ export default function ChatBot() {
             </button>
           </div>
 
-          <div className="h-[360px] overflow-y-auto space-y-3 pr-1">
+          <div className="h-[50vh] max-h-[360px] overflow-y-auto space-y-3 pr-1">
             {messages.map((msg, index) => (
               <div
                 key={index}
