@@ -1,13 +1,14 @@
 import type { NextConfig } from "next";
 
 const repoName = "My-Portfolio";
+const isGithubPages = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {
 	output: "export",
-	basePath: `/${repoName}`,
-	assetPrefix: `/${repoName}/`,
+	basePath: isGithubPages ? `/${repoName}` : "",
+	assetPrefix: isGithubPages ? `/${repoName}/` : "",
 	env: {
-		NEXT_PUBLIC_BASE_PATH: `/${repoName}`,
+		NEXT_PUBLIC_BASE_PATH: isGithubPages ? `/${repoName}` : "",
 	},
 	images: {
 		unoptimized: true,
