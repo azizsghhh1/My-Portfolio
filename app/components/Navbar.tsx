@@ -58,7 +58,7 @@ const Navbar = () => {
 
       {/* CV button (desktop) */}
       <a
-        href="/cv_security-6.pdf"
+        href="/cv.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="hidden md:block"
@@ -116,7 +116,7 @@ const Navbar = () => {
           </a>
         ))}
 
-        <a href="/cv_security-6.pdf" target="_blank" rel="noopener noreferrer">
+        <a href="/cv.pdf" target="_blank" rel="noopener noreferrer">
           <button className="border border-white/20 px-5 py-2 rounded-full text-sm hover:bg-[#a5c9ff] hover:text-black transition-all duration-300">
             CV
           </button>
