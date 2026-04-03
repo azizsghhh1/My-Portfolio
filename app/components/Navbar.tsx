@@ -17,7 +17,7 @@ const Navbar = () => {
   return (
     <nav className="flex justify-between items-center py-6 px-4 md:px-12 text-white relative z-50">
       {/* Logo */}
-      <div className="font-bold text-xl">Mohamed Aziz</div>
+      <div className="font-bold text-xl">My Portfolio</div>
 
       {/* Links Desktop */}
       <div className="hidden md:flex gap-8 text-lg">
