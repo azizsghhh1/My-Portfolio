@@ -43,14 +43,17 @@ jobs:
 
       - name: Start the application locally
         run: |
-          npm run dev -- --host 127.0.0.1 --port 3000 &
+          npm run dev -- --port 3000 &
           # wait until the server is reachable (avoid flaky sleep)
           for i in {1..30}; do
             curl -sf http://127.0.0.1:3000/ >/dev/null && break
             sleep 1
           done
-
+        
       - name: Run tests
+        run: curl localhost:3000
+
+      - name: Chatbot test
         run: |
           curl -X POST http://127.0.0.1:3000/api/chat \
             -H "Content-Type: application/json" \
