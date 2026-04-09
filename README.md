@@ -49,4 +49,4 @@ This project is configured for static export. The GitHub Pages workflow publishe
 Note: API routes (LLM chatbot) won’t run on GitHub Pages. If you need the chatbot, deploy to a platform that supports Next.js server functions (e.g., Vercel or Render).
 
 ## License
-All rights reserved. Mohamed Aziz SGHAIER
+All rights reserved. Mohamed Aziz SGHAIER (azizsghh111)
