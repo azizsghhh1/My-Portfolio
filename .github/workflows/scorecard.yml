@@ -17,6 +17,6 @@ jobs:
       - name: Run OpenSSF Scorecard
         uses: ossf/scorecard-action@v2.4.3
         with:
-          path: .                      # chemin vers ton repo
-          results_format: sarif         # ou json, csv
-          results_path: scorecard.sarif  # chemin du fichier de sortie
+          results_file: scorecard.sarif
+          results_format: sarif
+          publish_results: true
