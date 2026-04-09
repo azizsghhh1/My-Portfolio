@@ -36,7 +36,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Run OSSF Scorecard
-        uses: ossf/scorecard-action@v3
+        uses: ossf/scorecard-action@v2
         with:
           path: ./
 
