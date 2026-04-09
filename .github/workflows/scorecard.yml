@@ -1,25 +1,29 @@
-name: OpenSSF Scorecard Scan
+name: Scorecard
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+  pull_request:
 
 permissions:
-  id-token: write
-  contents: read
+  id-token: none        # ⚠ global id-token doit être NONE
+  contents: read        # minimum nécessaire
 
 jobs:
-  scorecard:
+  run-scorecard:
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
+      id-token: write    # seulement pour ce job
       contents: read
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Run OpenSSF Scorecard
-        uses: ossf/scorecard-action@v2.4.3
+      - uses: actions/checkout@v3
+      - name: Run Scorecard
+        uses: ossf/scorecard-action@v5
         with:
-          results_file: scorecard.sarif
-          results_format: sarif
-          publish_results: true
+          output: results.json
+          show-details: true
+      - name: Upload Scorecard results
+        uses: actions/upload-artifact@v3
+        with:
+          name: scorecard-results
+          path: results.json
