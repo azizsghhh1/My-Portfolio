@@ -29,42 +29,60 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      # (optionnel mais OK de garder)
       - name: Upload build artifact
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: build
+          path: .next
 
   test:
-    
     runs-on: ubuntu-latest
     needs: build
+
     steps:
+      # ✅ AJOUT (obligatoire)
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ✅ AJOUT (obligatoire)
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      # ✅ AJOUT (obligatoire)
+      - name: Install dependencies
+        run: npm ci
+
+      # (tu peux garder ou supprimer, mais pas suffisant seul)
       - name: Download build artifact
-        uses: actions/download-artifact@v7
+        uses: actions/download-artifact@v4
         with:
           name: build
+          path: .next
       
+      # ⚠️ CHANGEMENT: dev → start
       - name: Start the application locally
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          npm run start -- --port 3000 &
-          # wait until the server is reachable (avoid flaky sleep)
+          npm run start &
           for i in {1..30}; do
             curl -sf http://127.0.0.1:3000/ >/dev/null && break
             sleep 1
           done
         
       - name: Run tests
-        run: curl localhost:3000
+        run: curl -f http://127.0.0.1:3000
 
       - name: Chatbot test
-
         run: |
-          curl -X POST http://127.0.0.1:3000/api/chat \
+          curl -f -X POST http://127.0.0.1:3000/api/chat \
             -H "Content-Type: application/json" \
             -d '{
               "messages": [{"role":"user","content":"Hello"}],
               "language":"en"
             }'
-    
